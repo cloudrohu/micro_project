@@ -11,7 +11,7 @@
             {% for rs in slider %}
             <div class="carousel-item {% if forloop.first %}active{% endif %} ">
                 <img src="{{rs.web_image.url}}" class="d-none d-sm-block w-100" alt="...">
-                <img src="{[rs.mobile_image.url]}" class="d-block d-sm-none w-100" alt="...">
+                <img src="{{rs.mobile_image.url}}" class="d-block d-sm-none w-100" alt="...">
             </div>
             {% endfor %}
 
