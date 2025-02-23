@@ -2,6 +2,7 @@
 <html lang="en">
 {% load static %}
 <head>
+    {% for rs in header %}
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -20,23 +21,22 @@
         })(window, document, 'script', 'dataLayer', 'GTM-TM4KXSZR');
     </script>
     <!-- End Google Tag Manager -->
-
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Isle of Calm - 1, 2 BHK and Jodi Homes in Powai
-
-    </title>
-    <meta name="description" content="Discover Isle of Calm, offering 1 BHK & 2 BHK flats in Powai with beautiful views of Aarey & Sanjay Gandhi National Park, eco-friendly living, and top amenities.">
+    <title> {{rs.title}} </title>
+    <meta name="keywords" content="{{rs.keywords}}">
+    <meta name="description" content="{{rs.description}}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="{% static '' %}img/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+    <link rel="icon" type="image/png" href="{{rs.icon.url}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" />
     <link rel="stylesheet" href="{% static '' %}css/style.css">
+    
 </head>
 <body>
     {% block header %} {% endblock %}
@@ -47,8 +47,6 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <p>WHISPERING WOODS at ISLE OF CALM</p>
-
-
 
                     <img src="img/tower1.png" class="qr" alt=""> &nbsp;
                     <img src="img/tower2.png" class="qr" alt="">
@@ -97,9 +95,9 @@
                         <div class="col-md-3">
                             <div class="f-form-inp">
                                 <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-                                <a href="tel:02268680081" class="phone-btn">
+                                <a href="tel:{{rs.cuntact_no}}" class="phone-btn">
                                     <i class="fa-solid fa-phone"></i>
-                                    022 68680081</a>
+                                    {{rs.cuntact_no}}</a>
                             </div>
 
                         </div>
@@ -683,7 +681,6 @@
             document.createElement('form').submit.call(document.getElementById(elm));
         }
     </script>
-
 </body>
-
+{% endfor %}
 </html>

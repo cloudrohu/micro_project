@@ -18,11 +18,23 @@ from home.models import *
 
 
 def index(request):
-    header = Header.objects.all().order_by('-id')[0:1]  
+    header = Setting.objects.all().order_by('-id')[0:1]  
     slider = Web_Slider.objects.all().order_by('-id')[0:1]  
+    overview = Overview.objects.all().order_by('-id')[0:1]  
+    about_Us = About_Us.objects.all().order_by('-id')[0:1]  
+    unique_Selling_Proposition = Unique_Selling_Proposition.objects.all() 
+    configuration = Configuration.objects.all()
+    amenities = Amenities.objects.all()
+    gallery = Gallery.objects.all() 
 
     context={
         'header':header,
         'slider':slider,
+        'overview':overview,
+        'about_Us':about_Us,
+        'unique_Selling_Proposition':unique_Selling_Proposition,
+        'configuration':configuration,
+        'amenities':amenities,
+        'gallery':gallery,
     }
     return render(request,'index.html',context)

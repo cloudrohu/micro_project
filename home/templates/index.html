@@ -3,6 +3,7 @@
 {% load static %}
 {% block body %}
 
+{% for rs in header %}
 <div id="home">
     <div id="banners" class="carousel slide" data-bs-ride="carousel">
 
@@ -34,18 +35,17 @@
 
 <section id="overview" class="p-mob">
     <div class="container">
+        {% for rs in overview %}
         <div class="row overv-wrapper">
+           
             <div class="col-md-6">
                 <div class="overv-cont">
                     <div class="" data-aos="fade-right">
-                        <h1 class="overv-title">LIVE IN HARMONY WITH NATURE, EMBRACED BY TREES</h1>
+                        <h1 class="overv-title">{{rs.title}}</h1>
                     </div>
-
+                    <br>
                     <p class="text-center">
-                        Welcome to Whispering Woods at Isle of Calm, a peaceful residential community in Powai, surrounded by the greenery of Aarey and Sanjay Gandhi National Park. This thoughtfully planned space brings together modern living and nature, giving you a quiet escape
-                        from the city's hustle. Spread across 3 acres, this gated community offers spacious 1 & 2BHK homes with private decks that provide stunning views of Vihar Lake and the lush surroundings. Enjoy sunlight-filled mornings and breathtaking
-                        skyline views at night, making your home a perfect retreat of comfort and luxury. Here, you’ll find the perfect balance between nature and modern conveniences. If you’re looking for fresh air, open spaces, and a peaceful environment
-                        while staying connected to the city, Isle of Calm is the ideal place to call home.
+                        {{rs.details}}
                     </p>
 
                     <!-- <button type="button" class="btn overv-btn broch-click mb-3" onclick="formValid('brochure')" data-bs-toggle="modal" data-bs-target="#exampleModal">Download Brochure</button> -->
@@ -53,10 +53,10 @@
 
             </div>
             <div class="col-md-6 p-0 overv-img" data-aos="fade-left" data-aos-duration="1500">
-                <img src="{% static '' %}img/isle-of-calm-elevation.png" style="width: 100%;" alt="">
+                <img src="{{rs.web_image.url}}" style="width: 100%; height: 600px;" alt="">
                 <!-- <span>Artist's Impression</span> -->
             </div>
-
+            {% endfor %}
             <!-- <div class="col-md-6 p-0 overv-img d-none d-sm-block" data-aos="fade-left" data-aos-duration="1500">
                 <img src="{% static '' %}img/gallery/views/1.jpg" style="width: 100%;" alt=""> -->
             <!-- <span>Artist's Impression</span> -->
@@ -105,67 +105,17 @@
             <div class="col-md-12 highls row justify-content-center">
                 <p class="highl-head">USPs</p>
                 <div class="owl-carousel owl-theme highl-carousel">
+                    {% for rs in unique_Selling_Proposition %}
                     <div class="item" data-aos-duration="1000" data-aos="zoom-in">
                         <div class="highl">
                             <ul>
-                                <li><img src="{% static '' %}img/usp/1.png" alt="">Trusted Brand Of Powai – GHP Group</li>
-                                <li><img src="{% static '' %}img/usp/2.png" alt="">Ar. Hafeez Contractor</li>
+                                <li><img src="{{rs.icone.url}}" alt="">{{rs.title}}</li>
+                                <br><br>
+                                <li><img src="{{rs.icone2.url}}" alt="">{{rs.title2}}</li>
                             </ul>
                         </div>
                     </div>
-
-                    <div class="item" data-aos-duration="1500" data-aos="zoom-in">
-                        <div class="highl">
-                            <ul>
-                                <li><img src="{% static '' %}img/usp/3.png" alt="">Gated Community</li>
-                                <li><img src="{% static '' %}img/usp/4.png" alt="">Great Connectivity</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item" data-aos-duration="2500" data-aos="zoom-in">
-                        <div class="highl">
-                            <ul>
-                                <li><img src="{% static '' %}img/usp/5.png" alt="">Well-Planned Layouts</li>
-                                <li><img src="{% static '' %}img/usp/6.png" alt="">Quality Promise Residence</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="item" data-aos-duration="2500" data-aos="zoom-in">
-                        <div class="highl">
-                            <ul>
-
-                                <li><img src="{% static '' %}img/usp/7.png" alt="">Timeless Aarey & Sanjay Gandhi<br> National Park View </li>
-
-                                <li><img src="{% static '' %}img/usp/tower.png" alt="">33 Storey High Rise Development</li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-
-                    <div class="item" data-aos-duration="2500" data-aos="zoom-in">
-                        <div class="highl">
-                            <ul>
-
-                                <li><img src="{% static '' %}img/usp/double-bed.png" alt="">Ergonomically Designed <br>Homes for Spacious Living </li>
-
-                                <li><img src="{% static '' %}img/usp/desert.png" alt="">Minimal Land Usage for Development <br>and Maximum Open Spaces</li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-
-                    <div class="item" data-aos-duration="2500" data-aos="zoom-in">
-                        <div class="highl">
-                            <ul>
-                                <li><img src="{% static '' %}img/usp/amenities.png" alt="">Host of Top-notch Amenities </li>
-                                <li><img src="{% static '' %}img/usp/woodland.png" alt="">3 Acres of Development </li>
-                            </ul>
-                        </div>
-                    </div>
+                    {% endfor %}                    
                 </div>
             </div>
 
@@ -193,21 +143,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for rs in configuration %}
                         <tr>
-                            <td scope="row">1 BHK</td>
-                            <td> 415 - 505 SQ.FT.</td>
+                            <td scope="row">{{rs.typology}}</td>
+                            <td> {{rs.rera_carpet_area}}</td>
                             <td><a href="javascript:void(0);" class="price price-click" data-bs-toggle="modal" data-bs-target="#exampleModal">Enquire Now</a></td>
                         </tr>
-                        <tr>
-                            <td scope="row">2 BHK</td>
-                            <td> 717 - 782 SQ.FT.</td>
-                            <td><a href="javascript:void(0);" class="price price-click" data-bs-toggle="modal" data-bs-target="#exampleModal">Enquire Now</a></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Jodi Apartments</td>
-                            <td> On Request </td>
-                            <td><a href="javascript:void(0);" class="price price-click" data-bs-toggle="modal" data-bs-target="#exampleModal">Enquire Now</a></td>
-                        </tr>
+                        {% endfor %}
+                       
                     </tbody>
                 </table>
                 <p style="color: #fff;text-transform: capitalize;text-align: end;padding-top: 10px;font-size: 10px;">
@@ -223,145 +166,33 @@
         <div class="row">
             <h2 class="title" data-aos="fade-right">AMENITIES</h2>
 
-
             <div class="owl-carousel owl-theme amen-carousel">
-
-                <div class="item" data-aos-duration="1000" data-aos="zoom-in">
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/1.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Café
-                        </p>
-                    </div>
-
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/2.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Pet-Friendly Zone</p>
-                    </div>
-                </div>
-
-                <div class="item" data-aos-duration="1000" data-aos="zoom-in">
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/3.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Rooftop Star Gazing</p>
-                    </div>
-
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/4.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Community Lounge</p>
-                    </div>
-                </div>
-
+                {% for rs in amenities %}
                 <div class="item" data-aos-duration="1000" data-aos="zoom-in">
 
+                    
                     <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/5.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Swimming Pool & Kids’ Pool</p>
+                        <img src="{{rs.icone.url}}"/>
                     </div>
 
+                    <div class="amen-p">
+                        <p>{{rs.title}}</p>
+                    </div>
 
                     <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/6.png" />
+                        <img src="{{rs.icone2.url}}" />
                     </div>
+
                     <div class="amen-p">
-                        <p>Spacious Banquet Hall</p>
+                        <p>{{rs.title2}}</p>
                     </div>
+                    
                 </div>
-
-                <div class="item" data-aos-duration="1500" data-aos="zoom-in">
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/7.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Yoga Room</p>
-                    </div>
-
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/8.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Multi-purpose Games Room</p>
-                    </div>
-                </div>
-
-                <div class="item" data-aos-duration="1500" data-aos="zoom-in">
-
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/9.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Toddler Room/ Kids’ Play Area
-                        </p>
-                    </div>
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/10.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>24 Hours Fitness Centre</p>
-                    </div>
-
-                </div>
-
-                <div class="item" data-aos-duration="2000" data-aos="zoom-in">
-
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/11-1.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Electric Charging Station</p>
-                    </div>
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/12.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Library/Study Area</p>
-                    </div>
-                </div>
-
-                <div class="item" data-aos-duration="2500" data-aos="zoom-in">
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/13.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Convenience Store</p>
-                    </div>
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/14.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Indoor Pickle Ball</p>
-                    </div>
-                </div>
-
-                <div class="item" data-aos-duration="2500" data-aos="zoom-in">
-
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/15.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Co-working Spaces</p>
-                    </div>
-
-                    <div class="amen-img">
-                        <img src="{% static '' %}img/amenities/16.png" />
-                    </div>
-                    <div class="amen-p">
-                        <p>Badminton Court
-                        </p>
-                    </div>
-                </div>
-
+                {% endfor %}
+                
 
             </div>
+
         </div>
     </div>
 </section>
@@ -382,9 +213,11 @@
                         <button class="nav-link mb-3" id="plans-tab" data-bs-toggle="tab" data-bs-target="#plans" type="button" role="tab" aria-controls="plans" aria-selected="false">Plans</button>
                     </div>
                 </nav>
+                
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="views" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="owl-carousel owl-theme gall-carousel">
+                           
                             <div class="item">
                                 <div class="gall-img-wrapp">
                                     <a class="gall-img" href="img/gallery/mcms.webp" data-fancybox="views" data-caption=" Actual View">
@@ -398,6 +231,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="item">
                                 <div class="gall-img-wrapp">
                                     <a class="gall-img" href="img/gallery/photomontage.webp" data-fancybox="views" data-caption="Artist's Impression with Actual View">
@@ -883,6 +717,7 @@
 
             <div class="col-md-6">
                 <div class="accordion mt-2" id="accordionExample">
+
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -1002,6 +837,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
 
             </div>
@@ -1014,8 +850,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3582.766856277853!2d72.8952909!3d19.1397843!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b70034eeebf3%3A0x121bccd26173e69c!2sIsle%20Of%20Clam%20by%20GHP%20Group!5e1!3m2!1sen!2sin!4v1725367414120!5m2!1sen!2sin"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                {{rs.location | safe}}
             </div>
             <div class="col-md-6">
                 <div class="form-body" data-aos="fade-left">
@@ -1108,6 +943,6 @@
         </div>
     </div>
 </section>
-
+{% endfor %}
 
 {% endblock body %}
