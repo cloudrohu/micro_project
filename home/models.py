@@ -12,6 +12,7 @@ class Setting(models.Model):
     color = models.CharField(max_length=150)
     cuntact_no = models.CharField(max_length=150,)
     location = models.CharField(max_length=1150,)
+    site_address= models.CharField(max_length=1150,blank=True,null=True)
     
     def __str__(self):
         return self.title    
