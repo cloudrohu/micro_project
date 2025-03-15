@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    {% for rs in header %}
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TM4KXSZR');
+    </script>
+    <!-- End Google Tag Manager -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{rs.title}} </title>
+    <meta name="keywords" content="{{rs.keywords}}">
+    <meta name="description" content="{{rs.description}}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{rs.icon.url}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" />
+    <link rel="stylesheet" href="{% static '' %}css/style.css">
+    
+</head>
+<body>
+    {% block header %} {% endblock %}
+    {% block body %}{% endblock body %}
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>WHISPERING WOODS at ISLE OF CALM</p>
+
+                    <img src="img/tower1.png" class="qr" alt=""> &nbsp;
+                    <img src="img/tower2.png" class="qr" alt="">
+                    <p>Whispering Woods is the campaign name for the project Isle of Calm registered with MahaRERA under registration no. P51800077922 – Isle of Calm - Tower 1 & P51800077401 – Isle of Calm - Tower 2, and its details are available on the
+                        website <a href="https://maharera.maharashtra.gov.in ">https://maharera.maharashtra.gov.in</a> under registered projects. Tower 3 will receive its RERA at the later stage. *T&C Apply</p>
+
+
+                </div>
+                <div class="col-md-12 text-center">
+                    <p>© 2024 - GHP GROUP - ALL RIGHTS RESERVED.</p>
+                    <button type="button" class="btn disc-btn" data-bs-toggle="modal" data-bs-target="#disclaimereModal">Disclaimer</button>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="footer-form">
+        <form id="footer-form" class="requires-validation" action="contact.php" method="post" onsubmit="return save_landing_pageinfo('footer-form');" novalidate="novalidate">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="f-form-inp">
+                                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
+                                <input type="hidden" class="source" name="source" value="Footer Enquiry Form">
+                                <label for="name" generated="true" class="error"></label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="f-form-inp">
+                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
+                                <label for="email" generated="true" class="error"></label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="f-form-inp">
+                                <input class="form-control" type="number" name="phone" placeholder="Contact Number" required>
+                                <label for="phone" generated="true" class="error"></label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="f-form-inp">
+                                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                                <a href="tel:{{rs.cuntact_no}}" class="phone-btn">
+                                    <i class="fa-solid fa-phone"></i>
+                                    {{rs.cuntact_no}}</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <!-- <button type="button" class="btn btn-dark pulse interested d-none d-sm-block enq-click"
+        onclick="formValid('interested')" data-bs-toggle="modal" data-bs-target="#exampleModal">Enquire Now</button> -->
+    <button type="button" class="btn btn-dark pulse brochure d-none d-sm-block broch-click" onclick="formValid('brochure')" data-bs-toggle="modal" data-bs-target="#exampleModal">Download Brochure</button>
+    <button type="button" id="float-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+    <!-- <a href="tel:02268680081" class="phone-btn d-none d-sm-block pulse"><img src="img/phone.png" alt=""></a> -->
+
+    <a href="tel:02268680081" class="phone-btn-mob d-block d-sm-none pulse"><img src="img/phone.png" alt=""></a>
+
+    <div class="d-block d-lg-none footer-form-mob">
+        <button type="button" class="btn enq-click enq-click-mob d-block d-lg-none" onclick="formValid('interested')" data-bs-toggle="modal" data-bs-target="#exampleModal">Enquire Now</button>
+        <button type="button" class="btn broch-click broch-click-mob d-block d-lg-none" onclick="formValid('brochure')" data-bs-toggle="modal" data-bs-target="#exampleModal">Download Brochure</button>
+    </div>
+
+    <!-- Modal Form -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title">Modal title</h5> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="modal-form-holder">
+                                <div class="modal-form-content">
+                                    <div class="modal-form-items">
+                                        <h3 class="form-title">Contact Today</h3>
+                                        <p>Fill in the data below.</p>
+                                        <form id="enq-form" class="requires-validation" action="contact.php" method="post" onsubmit="return save_landing_pageinfo('enq-form');" novalidate="novalidate">
+                                            <div class="col-md-12">
+                                                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
+                                                <input type="hidden" class="source" name="source" value="">
+                                                <label for="name" generated="true" class="error"></label>
+                                                <!-- <div class="valid-feedback">Username field is valid!</div>
+                                           <div class="invalid-feedback">Username field cannot be blank!</div> -->
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
+                                                <label for="email" generated="true" class="error"></label>
+                                                <!-- <div class="valid-feedback">Email field is valid!</div>
+                                             <div class="invalid-feedback">Email field cannot be blank!</div> -->
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <input class="form-control" type="number" name="phone" placeholder="Contact Number" required>
+                                                <label for="phone" generated="true" class="error"></label>
+                                                <!-- <div class="valid-feedback">Number field is valid!</div>
+                                           <div class="invalid-feedback">Number field cannot be blank!</div> -->
+                                            </div>
+
+                                            <div class="form-check mt-2">
+                                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                                <label class="form-check-label">I confirm
+                                                    that all data are
+                                                    correct</label>
+                                                <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
+                                            </div>
+
+
+                                            <div class="form-button mt-3">
+                                                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer -->
+
+    <div class="modal fade" id="disclaimereModal" tabindex="-1" aria-labelledby="disclaimereModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="disc-title">Disclaimer</h5> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12 disc text-center">
+                        <h5 class="disc-title">Disclaimer</h5>
+                        <span>The picture, layout themes, project landscape, plans,
+                            specifications, dimensions,
+                            designs, measurements, locations amenities etc. shown in the
+                            collateral/brochure are
+                            artistic/ inspiration/imagination and tentative in nature and all
+                            locations and/or
+                            dimensions depicted in the drawing of the layout and/or landscape
+                            are indicative of
+                            the kind of development that is proposed by the promoters and not to
+                            scale and are
+                            subject to change and may vary/differ as may be required by the
+                            competent authority
+                            and/or the promoters, or construction contingencies or construction
+                            variance or site
+                            conditions or final plans and that the actual product/ development
+                            and any other
+                            aspect may differ from what is portrayed herein. The intended
+                            recipient/reader/viewer/interested party should note that these are
+                            to be treated as
+                            purely provisional, informative, and tentative subject to the
+                            approval of authorities or
+                            otherwise and the promoters reserves their right to make changes and
+                            alterations at
+                            its sole discretion. None of the images, material, stock
+                            photography, projections,
+                            elevations, details, descriptions and other information that are
+                            displayed/ contained
+                            on the website and brochures, are intended or shall amount to any
+                            advertisement,
+                            assurance, claim, inducement, information, invitation, obligation,
+                            offer, proposal,
+                            representation, solicitation, or warranty of any nature for any
+                            purposes whatsoever
+                            including within the purview of the Real Estate (Development and
+                            Regulation) Act,
+                            2016 (“RERA”) or otherwise. The finalized details, specifications
+                            and particulars with
+                            respect to layout themes, project landscapes, amenities etc. of the
+                            Project and/or the
+                            balance building/ layout shall be indicated in the Agreement for
+                            Sale that may be
+                            executed between the promoters and the purchaser and not otherwise.
+                            While
+                            reasonable care has been taken in fashioning this
+                            advertisement/brochure, any
+                            intended recipient/reader/viewer/interested party should verify all
+                            the information with
+                            the promoters prior to purchase in the Project, the promoters shall
+                            not be held
+                            responsible for any inaccuracies or omissions. The promoters shall
+                            not be liable for
+                            any consequences and/or actions taken by the intended
+                            recipient/reader/viewer/interested party relying on the material or
+                            information from
+                            this advertisement or any information provided by the Real Estate
+                            Agent / Broker /
+                            Channel Partner without independently verifying with the promoters.
+                            By using or
+
+                            accessing the Website and brochures, the intended
+                            recipient/reader/viewer/interested
+                            party agree with this. *T&amp;C Apply</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- <a id="dbrochure" href="img/.pdf" download>
+    </a>
+    <div id="pageloader">
+        <img src="img/.png" alt="processing..." />
+    </div> -->
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static '' %}js/jquery.validate.js"></script>
+    <script src="{% static '' %}js/mobilevalidate.js"></script>
+    <script src="{% static '' %}js/cookie.js"></script>
+    <script src="{% static '' %}js/popout.js?v=1.01"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            Delete_Cookie('formfilled');
+
+
+
+
+            // ---------------for model only-----
+
+            $(".broch-click").click(function() {
+                $('.form-title').html('Download Brochure');
+                $('#enq-form .source').val('Download Brochure');
+            });
+
+            $(".enq-click").click(function() {
+                $('.form-title').html('Enquire Now');
+                $('#enq-form .source').val('Enquire Now');
+            });
+
+            $(".price-click").click(function() {
+                $('.form-title').html('Check Price');
+                $('#enq-form .source').val('Check Price');
+            });
+
+            $(".plans-click").click(function() {
+                $('.form-title').html('Plans');
+                $('#enq-form .source').val('Plans');
+            });
+
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.menu-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                const offset = targetElement.offsetTop - document.querySelector('nav').offsetHeight;
+
+                if ($(window).width() <= 768) {
+                    window.scrollTo({
+                        top: offset + 290,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    window.scrollTo({
+                        top: offset + 75,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        $(".usp-carousel").owlCarousel({
+            loop: false,
+            margin: 20,
+            nav: true,
+            dots: false,
+            slideSpeed: 3000,
+            slideTransition: 'linear',
+            // autoplay: true,
+            // autoplaySpeed: 7000,
+            // autoplayTimeout: 5000,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 4
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+
+        $(".highl-carousel").owlCarousel({
+            loop: false,
+            margin: 20,
+            nav: true,
+            dots: false,
+            slideSpeed: 3000,
+            slideTransition: 'linear',
+            // autoplay: true,
+            // autoplaySpeed: 7000,
+            // autoplayTimeout: 5000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
+
+        $(".loca-carousel").owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: true,
+            dots: false,
+            slideSpeed: 3000,
+            slideTransition: 'linear',
+            // autoplay: true,
+            // autoplaySpeed: 7000,
+            // autoplayTimeout: 5000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        });
+
+        $(".gall-carousel").owlCarousel({
+            loop: false,
+            margin: 20,
+            nav: true,
+            dots: false,
+            slideSpeed: 3000,
+            slideTransition: 'linear',
+            // autoplay: true,
+            // autoplaySpeed: 7000,
+            // autoplayTimeout: 5000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 2
+                }
+            }
+        });
+
+        $(".amen-carousel").owlCarousel({
+            loop: false,
+            margin: 20,
+            nav: true,
+            dots: false,
+            slideSpeed: 3000,
+            slideTransition: 'linear',
+            // autoplay: true,
+            // autoplaySpeed: 7000,
+            // autoplayTimeout: 5000,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 4
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+
+        $(".plans-carousel").owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: true,
+            dots: false,
+            slideSpeed: 3000,
+            slideTransition: 'linear',
+            // autoplay: true,
+            // autoplaySpeed: 7000,
+            // autoplayTimeout: 5000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        });
+
+        $(".qr-carousel").owlCarousel({
+            loop: false,
+            margin: 20,
+            nav: true,
+            dots: false,
+            slideSpeed: 3000,
+            slideTransition: 'linear',
+            // autoplay: true,
+            // autoplaySpeed: 7000,
+            // autoplayTimeout: 5000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // Fancybox Configuration
+        $('[data-fancybox="views"]').fancybox({
+            buttons: [
+                "slideShow",
+                "thumbs",
+                "zoom",
+                "fullScreen",
+                "share",
+                "close"
+            ],
+            loop: false,
+            protect: true
+        });
+
+        $('[data-fancybox="gallery"]').fancybox({
+            buttons: [
+                "slideShow",
+                "thumbs",
+                "zoom",
+                "fullScreen",
+                "share",
+                "close"
+            ],
+            loop: false,
+            protect: true
+        });
+
+        $('[data-fancybox="map"]').fancybox({
+            buttons: [
+                "slideShow",
+                "thumbs",
+                "zoom",
+                "fullScreen",
+                "share",
+                "close"
+            ],
+            loop: false,
+            protect: true
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('.footer-form').fadeIn();
+                    $('.footer-form').addClass("d-none d-sm-block");
+                } else {
+                    $('.footer-form').fadeOut();
+                    $('.footer-form').removeClass("d-none d-sm-block");
+                }
+            });
+            $('#scroll').click(function() {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 100);
+                return false;
+            });
+        });
+    </script>
+
+    <script>
+        (function() {
+            'use strict'
+            const forms = document.querySelectorAll('.requires-validation')
+            Array.from(forms)
+                .forEach(function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+
+    <script>
+        let vis = document.getElementById('interested')
+        let broch = document.getElementById('brochure')
+
+
+        function formValid(source) {
+            let fsource = source
+
+            let fsource1 = document.getElementsByClassName('source')
+
+            fsource1[0].val = fsource
+
+
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('#scroll').fadeIn();
+                } else {
+                    $('#scroll').fadeOut();
+                }
+            });
+            $('#scroll').click(function() {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 100);
+                return false;
+            });
+        });
+    </script>
+    <script>
+        const navLinks = document.querySelectorAll('.nav-item')
+        const menuToggle = document.getElementById('navbarSupportedContent')
+        const bsCollapse = new bootstrap.Collapse(menuToggle, {
+            toggle: false
+        })
+        navLinks.forEach((l) => {
+            l.addEventListener('click', () => {
+                bsCollapse.toggle()
+            })
+        })
+    </script>
+
+
+    <script type="text/javascript">
+        function save_landing_pageinfo(elm) {
+            jQuery('#' + elm + ' input[type=submit], #' + elm + ' button').prop('disabled', true);
+            setTimeout(function() {
+                jQuery('#' + elm + ' input[type=submit], #' + elm + ' button').prop('disabled', false);
+            }, 5000);
+            var name = jQuery('#' + elm + ' input[name="name"]').val();
+            var mobileno = jQuery('#' + elm + ' input[name="phone"]').val();
+            var emailid = jQuery('#' + elm + ' input[name="email"]').val();
+            // var message = jQuery('#' + elm + ' textarea[name="message"]').val();
+            // var conf = jQuery('#' + elm + ' select[name="conf"]').val();
+            var fsource = jQuery('#' + elm + ' input[name="source"]').val();
+            var current_url = location.hostname;
+
+            if (name == "") {
+                //alert("Please Enter Your Name");
+                return false;
+            }
+
+            mobileno = mobileno.replace(/[^0-9]/g, '');
+            if (mobileno.length != 10) {
+                //alert("Please Enter 10 Digit Mobile Number");
+                return false;
+            }
+
+
+
+            if (fsource == 'Download Brochure') {
+                document.getElementById('dbrochure').click();
+            }
+
+
+            // if (elm == 'floor') {
+            //     document.getElementById('floor1').click();
+            // }
+
+            // var _phone = mobileno;
+
+            if (name != "" && mobileno != "") {
+                $("#pageloader").fadeIn();
+                return true;
+            }
+
+            return false;
+        }
+
+        function submitForm(elm) {
+            document.createElement('form').submit.call(document.getElementById(elm));
+        }
+    </script>
+</body>
+{% endfor %}
+</html>
