@@ -52,3 +52,7 @@ class GalleryAdmin(admin.ModelAdmin):
 admin.site.register(Gallery, GalleryAdmin)
 
 
+# Register your models here. 9
+class NearbyAdmin(admin.ModelAdmin):
+    list_display = ['id','section', 'title',]
+admin.site.register(Nearby, NearbyAdmin)

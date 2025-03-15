@@ -411,19 +411,10 @@
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul>
+                                    {% for i in connectivity %}
                                     <li>Aarey Metro Station – 2.9 km – 9 min</li>
-                                    <li>Upcoming Saki Vihar Metro Station – 2.5km – 10min</li>
-
-                                    <li>JVLR – 3.7 km – 12 min</li>
-                                    <li>Upcoming Metro Line 3 – Colaba-SEEPZ – 4 km – 14 min</li>
-                                    <li>LBS: 6.5 km – 15 min</li>
-                                    <li>Chhatrapati Shivaji Maharaj International Airport – 6.5 km – 30 min</li>
-                                    <li>Upcoming Metro Line 6: 6.7 km – 20 min</li>
-                                    <li>Kanjurmarg Railway Station – 6.8 km – 21 min</li>
-                                    <li>Andheri – 7 km – 23 min (Via Aarey Rd)</li>
-                                    <li>Eastern Express Highway – 7.6 km - 22 min</li>
-                                    <li>Domestic Airport – 9.7 km – 40 min (Via Saki-Vihar Rd)</li>
-                                    <li>BKC – 19 km – 34 min (Via Connector)</li>
+                                    {% endfor %}
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -437,12 +428,9 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul>
+                                    {% for i in hotel %}
                                     <li>Ramada by Wyndham – Powai – 400 m – 1 min</li>
-                                    <li>Marriott - Lakeside Chalet – 1.7 km – 7 min</li>
-                                    <li>The Westin Powai – 1.8 km – 7 min</li>
-                                    <li>Meluha The Fern - An Ecotel Hotel – 4.4 km – 13 min</li>
-                                    <li>The Leela Mumbai – 6.3 km – 32 min (via Saki Vihar Rd)</li>
-                                    <li>ITC Maratha – 8.4 km – 33 min (via JVLR)</li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
@@ -456,14 +444,10 @@
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul>
+                                    {% for i in educational %}
                                     <li>IIM – 200 m – 5 min</li>
-                                    <li>A. M. Naik School – 2 km – 6 min</li>
-                                    <li>Gopal Sharma Memorial School – 4 km – 17 min</li>
-                                    <li>Gopal Sharma International School - 4 km - 17 min</li>
-                                    <li>Chandrabhan Sharma College - 4 km - 17 min</li>
-                                    <li>Hiranandani Foundation School – 4.1 km – 19 min</li>
-                                    <li>IIT Bombay – 4.9 km – 18 min</li>
-                                    <li>Poddar International School – 5.3 km – 21 min</li>
+                                    {% endfor %}
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -477,14 +461,10 @@
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul>
-                                    <!-- <li>D Mart – 4 km – 13 min</li>
-                                    <li>Galleria Shopping Mall – 4.4 km – 15 min</li> -->
+                                    {% for i in shoping %}
                                     <li>Haiko Supermarket, Powai – 4.5 km - 13 min</li>
-                                    <li>Jio World Mall - 6.7 km - 38 min</li>
-                                    <!-- <li>Phoenix Marketcity – 7.4 km – 40 min</li>
-                                    <li>R City Mall – 8.2 km – 30 min</li> -->
-                                    <li>Oberoi Mall – 9.1 km – 23 min (Via Aarey Rd)</li>
-                                    <li>Jio World Drive - 16 km - 44 min (Via Saki Vihar Rd)</li>
+                                    {% endfor %}
+                                  
                                 </ul>
                             </div>
                         </div>
@@ -498,9 +478,10 @@
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul>
+                                    {% for i in healthcare %}
                                     <li>Nirali Healthcare – 2.5 km – 8 min</li>
-                                    <li>Hiranandani Hospital – 5.4 km – 13 min</li>
-                                    <li>Seven Hills Hospital – 5.6 km – 20 min</li>
+                                    {% endfor %}
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -514,9 +495,10 @@
                         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul>
+                                    {% for i in landmark %}
                                     <li>Vihar Lake – 100 m – 1 min</li>
-                                    <li>Powai Garden – 1.5 km – 6 min</li>
-                                    <li>Powai Lake – 4.8 km - 10 min</li>
+                                    {% endfor %}
+                                    
                                 </ul>
                             </div>
                         </div>

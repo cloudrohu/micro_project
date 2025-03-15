@@ -31,6 +31,14 @@ def index(request):
     exterior = Gallery.objects.filter(section = 'Exterior').order_by('-id')
     plans = Gallery.objects.filter(section = 'Plans').order_by('-id')
 
+    connectivity = Nearby.objects.filter(section = 'CONNECTIVITY').order_by('-id')
+    hotel = Nearby.objects.filter(section = 'HOTELS').order_by('-id')
+    educational = Nearby.objects.filter(section = 'EDUCATIONAL INSTITUTIONS').order_by('-id')
+    shoping = Nearby.objects.filter(section = 'SHOPPING & ENTERTAINMENT').order_by('-id')
+    healthcare = Nearby.objects.filter(section = 'HEALTHCARE').order_by('-id')
+    landmark = Nearby.objects.filter(section = 'LANDMARKS').order_by('-id')
+
+
     context={
         'header':header,
         'slider':slider,
@@ -44,5 +52,12 @@ def index(request):
         'interiors':interiors,
         'exterior':exterior,
         'plans':plans,
+
+        'connectivity':connectivity,
+        'hotel':hotel,
+        'educational':educational,
+        'shoping':shoping,
+        'healthcare':healthcare,
+        'landmark':landmark,
     }
     return render(request,'index.html',context)
